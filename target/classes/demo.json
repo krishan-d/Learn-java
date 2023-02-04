@@ -1,0 +1,14 @@
+{
+  "pageInfo": {
+    "pageName": "Codezup Homepage",
+    "logo": "https://codezup.com/logo.jpg"
+  },
+  "posts": [{
+    "post_id": "987456123",
+    "actor_id": "101",
+    "author_name": "Robert",
+    "post_title": "How to parse JSON in Java by codezup.com",
+    "comments": [],
+    "time_of_post": "5689563245"
+  }]
+}

@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+<class>
+    <student id = "100000">
+        <firstname>Eve</firstname>
+        <lastname></lastname>
+        <nickname>Ev</nickname>
+        <marks>94</marks>
+    </student>
+
+    <student id = "100001">
+        <firstname>Edwina</firstname>
+        <lastname>Sharma</lastname>
+        <nickname>Ed</nickname>
+        <marks>95</marks>
+    </student>
+
+    <student id = "100002">
+        <firstname>Song</firstname>
+        <lastname>i</lastname>
+        <nickname>A</nickname>
+        <marks>90</marks>
+    </student>
+</class>
