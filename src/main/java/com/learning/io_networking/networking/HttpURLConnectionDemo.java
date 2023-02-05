@@ -6,20 +6,20 @@ import java.net.UnknownHostException;
 
 public class HttpURLConnectionDemo {
     public static void main(String[] args) {
-        HttpURLConnection huc = null;
+        HttpURLConnection connection = null;
         String hostname = "https://www.coursera.org/";
         try {
             URL url = new URL(hostname);
-            huc = (HttpURLConnection) url.openConnection();
-            System.out.println("ResponseCode = " + huc.getResponseCode());
+            connection = (HttpURLConnection) url.openConnection();
+            System.out.println("ResponseCode = " + connection.getResponseCode());
 
             for (int i = 1; i <= 8; i++) {
-                System.out.println(huc.getHeaderFieldKey(i) + " = " + huc.getHeaderField(i));
+                System.out.println(connection.getHeaderFieldKey(i) + " = " + connection.getHeaderField(i));
             }
-            huc.disconnect();
+            connection.disconnect();
         } catch (UnknownHostException ee) {
-            assert huc != null;
-            huc.disconnect();
+            assert connection != null;
+            connection.disconnect();
         } catch (Exception e) {
             System.out.println(e);
         }

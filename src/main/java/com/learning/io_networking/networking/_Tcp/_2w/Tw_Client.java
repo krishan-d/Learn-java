@@ -1,4 +1,4 @@
-package com.learning.io_networking.networking;
+package com.learning.io_networking.networking._Tcp._2w;
 
 import java.io.*;
 import java.net.Socket;
@@ -17,14 +17,14 @@ public class Tw_Client {
             output = new DataOutputStream(socket.getOutputStream());
             br = new BufferedReader(new InputStreamReader(System.in));
 
-            String str = "", str2;
-            while (!str.equalsIgnoreCase("End")) {
-                str = br.readLine();
-                output.writeUTF(str);
+            String message = "", received;
+            while (!message.equalsIgnoreCase("End")) {
+                message = br.readLine();
+                output.writeUTF(message);
                 output.flush();
 
-                str2 = din.readUTF();
-                System.out.println("Server says: " + str2);
+                received = din.readUTF();
+                System.out.println("Server says: " + received);
             }
 
             output.close();

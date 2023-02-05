@@ -1,4 +1,4 @@
-package com.learning.io_networking.networking;
+package com.learning.io_networking.networking.udp;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

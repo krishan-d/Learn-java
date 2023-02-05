@@ -1,4 +1,4 @@
-package com.learning.io_networking.networking;
+package com.learning.io_networking.networking._Tcp;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TCP_Server {
+public class TcpServer {
     private Socket socket = null;
     private ServerSocket server = null;
     private DataInputStream in = null;
 
-    TCP_Server(int port) {
+    TcpServer(int port) {
         //
         try {
             server = new ServerSocket(port);
@@ -44,6 +44,6 @@ public class TCP_Server {
 
     public static void main(String[] args) {
         int port = 5000;
-        TCP_Server server = new TCP_Server(port);
+        TcpServer server = new TcpServer(port);
     }
 }

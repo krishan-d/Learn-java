@@ -3,9 +3,13 @@ package com.learning.io_networking.networking;
 import java.net.InetAddress;
 import java.util.Arrays;
 
-public class InetAddressDemo {
+public class InetAddressExample {
     public static void main(String[] args) {
         try {
+            // To get and print InetAddress of the Local Host
+            InetAddress address = InetAddress.getLocalHost();
+            System.out.println("Localhost: " + address);
+
             InetAddress ip = InetAddress.getByName("www.coursera.org");
 
             System.out.println("Host Name: " + ip.getHostName());

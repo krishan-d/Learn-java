@@ -1,4 +1,4 @@
-package com.learning.io_networking.networking;
+package com.learning.io_networking.networking._Tcp._2w;
 
 import java.io.*;
 import java.net.ServerSocket;

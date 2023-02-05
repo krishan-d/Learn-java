@@ -1,4 +1,4 @@
-package com.learning.core_enum;
+package com.learning.enum_;
 
 import java.util.Objects;
 
