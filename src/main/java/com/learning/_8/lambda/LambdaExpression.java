@@ -55,12 +55,13 @@ public class LambdaExpression {
         FuncInter2 add = Integer::sum;
         FuncInter2 divide = (x, y) -> x / y;
         //Or
+        /*
         FuncInter2 d = new FuncInter2() {
             @Override
             public int operation(int a, int b) {
                 return a / b;
             }
-        };
+        };*/
 
         System.out.println(add.operation(1, 7));
 
