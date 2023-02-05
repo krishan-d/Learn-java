@@ -1,4 +1,4 @@
-package com.learning.misc.lambda;
+package com.learning._8.lambda;
 
 @FunctionalInterface
 interface FuncInter1 {

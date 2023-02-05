@@ -1,4 +1,4 @@
-package com.learning.basics_and_collections.stream;
+package com.learning._8.stream;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,4 +1,4 @@
-package com.learning.basics_and_collections.stream;
+package com.learning._8.stream;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

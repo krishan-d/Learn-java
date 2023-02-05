@@ -1,7 +1,8 @@
 package com.learning.optional;
 
-import static org.junit.Assert.*;
-
+import com.learning._8.optional.Address;
+import com.learning._8.optional.Country;
+import com.learning._8.optional.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
