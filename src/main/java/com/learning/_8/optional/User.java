@@ -3,27 +3,26 @@ package com.learning._8.optional;
 import java.util.Optional;
 
 public class User {
-    private String email;
+    private int id;
     private String password;
     private Address address;
-    private String position;
 
-    public User(String email, String password) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User(int id1, String password1) {
         super();
-        this.email = email;
-        this.password = password;
+        id = id1;
+        password = password1;
     }
 
     public User() {
 
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getPassword() {
@@ -42,11 +41,4 @@ public class User {
         this.address = address;
     }
 
-    public Optional<String> getPosition() {
-        return Optional.ofNullable(position);
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
 }
