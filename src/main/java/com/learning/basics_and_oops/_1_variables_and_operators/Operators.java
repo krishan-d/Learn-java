@@ -1,4 +1,4 @@
-package com.learning.basics_and_oops.variables_and_operators;
+package com.learning.basics_and_oops._1_variables_and_operators;
 
 public class Operators {
     public static void main(String[] args) {

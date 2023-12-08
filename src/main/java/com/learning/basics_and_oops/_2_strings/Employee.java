@@ -1,4 +1,4 @@
-package com.learning.basics_and_oops.strings;
+package com.learning.basics_and_oops._2_strings;
 
 /*
 * Immutable Class:

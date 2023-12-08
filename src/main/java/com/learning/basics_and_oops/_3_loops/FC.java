@@ -1,4 +1,4 @@
-package com.learning.basics_and_oops.control_flow;
+package com.learning.basics_and_oops._3_loops;
 
 public class FC {
     public static void main(String[] args) {
