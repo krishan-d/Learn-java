@@ -198,4 +198,22 @@ public class Exceptions {
         int d = 10 / 0;
     }
 
+
+}
+
+class SuperClass {
+
+    public void method1() throws RuntimeException {
+        return;
+    }
+}
+class SubClass extends SuperClass{
+
+    @Override
+    //public void method1() throws Exception { // Compile error - Parent exception not allowed
+    public void method1() throws RuntimeException {
+        return;
+    }
+
+
 }

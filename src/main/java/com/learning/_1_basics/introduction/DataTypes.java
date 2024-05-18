@@ -34,10 +34,14 @@ s
 
         // Literals...
         boolean res = true;
+        boolean hasValidLicence = false;
 
-        char capitalC = 'C';
-        char c = 'a';
+        char capitalC = 'D'; // Literal character
+        char myUnicode = '\u0044'; // D : Unicode Value
+        char myDecimalCode = 68; // D : Integer Value
+        char c = '\b';
         // NOTE: Escape sequences can be used as character literals. such as \b \t \n \f \r \" \' \\
+        // Example: might be used to store last key pressed by user in a game
 
         byte b = 100;
         byte myMinByte = Byte.MIN_VALUE, myMaxByte = Byte.MAX_VALUE;
@@ -80,6 +84,8 @@ s
         float myFloatNumber = 5.25F;
 //      float myFloatNumber = (float)5.25; // Type casting, NOT RECOMMENDED
 
+        double d0 = 0.0;
+        System.out.println("double default value: " + d0);
         double d1 = 123.4;
         double d2 = 1.234e2; // same value as d1, but in scientific notation
         System.out.println(Double.MIN_VALUE + " | " + Double.MAX_VALUE);

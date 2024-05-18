@@ -61,6 +61,11 @@ NOTE : UTF-8 is the most popular unicode character encoding with 90% websites us
 
 ## Wrapper Classes in Java
 
+Java uses concept of Wrapper classes, for all of its 8 primitive data types.
+A Wrapper class provides simple operations, as well as some basic information about primitive data type, 
+which can not be stored on primitive itself.
+Such as MIN_VALUE and MAX_VALUE are elements of basic information.
+
 <table class="alt">
 <tbody><tr><th>Primitive Type</th><th>Wrapper class</th></tr>
 <tr><td>boolean</td><td>Boolean</td></tr>

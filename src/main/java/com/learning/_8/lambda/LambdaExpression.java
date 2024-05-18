@@ -1,12 +1,15 @@
 package com.learning._8.lambda;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
 @FunctionalInterface
 interface FuncInter1 {
     int i = 10;
 
     //Abstract Function
     void abstractFun(int x);
-
     //Non-abstract (or default) Function
     default void normalFunc() {
         System.out.println("This is normal function!");
@@ -16,6 +19,11 @@ interface FuncInter1 {
     static void staticFunc() {
         System.out.println("This is a static method inside Functional Interface");
     }
+}
+interface FuncInter4{
+    String  method1();
+
+//    String method2(); //NOTE: on uncommenting, this interface is no longer Functional interface, and lambda will no longer work
 }
 
 interface FuncInter2 {
@@ -69,6 +77,8 @@ public class LambdaExpression {
         System.out.println("Addition is: " + le.operate(10, 2, add));
         System.out.println("Division is: " + le.operate(10, 2, divide));
 
+        FuncInter4 f4=()-> {return "String F4";};
+        System.out.println(f4.method1());
 
         FuncInter3 ob1 = message -> System.out.println("Hi, " + message + "!");
         ob1.sayMessage("Edwina");
