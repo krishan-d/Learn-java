@@ -25,7 +25,6 @@ class Emp implements Serializable {
 public class SerialExample {
     public static void printdata(Emp object1)
     {
-
         System.out.println("name = " + object1.name);
         System.out.println("age = " + object1.age);
         System.out.println("a = " + object1.a);

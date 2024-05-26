@@ -10,67 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-class Employee {
-    int id;
-    String name;
-    double salary;
-
-    public Employee(int id, String name, double salary) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-    }
-
-    public void salaryIncrement(Double percentage) {
-        double newSalary = salary + percentage * salary / 100;
-        setSalary(newSalary);
-    }
-
-    public String toString() {
-        return "Id: " + id + " Name:" + name + " Price:" + salary;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(double salary) {
-        this.salary = salary;
-    }
-}
-
-class EmployeeRepository {
-    private List<Employee> empList;
-
-    public EmployeeRepository(List<Employee> empList) {
-        this.empList = empList;
-    }
-
-    public Employee findId(Integer id) {
-        for (Employee emp : empList) {
-            if (emp.getId() == id)
-                return emp;
-        }
-        return null;
-    }
-}
-
 public class StreamExample2 {
 
     public static void main(String[] args) throws IOException {
