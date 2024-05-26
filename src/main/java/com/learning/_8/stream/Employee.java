@@ -1,9 +1,27 @@
 package com.learning._8.stream;
 
+import java.util.List;
+
 public class Employee {
     int id;
     String name;
     double salary;
+    private List<String> phoneNumbers;
+
+    public List<String> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<String> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
+    public Employee(int id, String name, double salary, List<String> phoneNumbers) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.phoneNumbers = phoneNumbers;
+    }
 
     public Employee(int id, String name, double salary) {
         this.id = id;

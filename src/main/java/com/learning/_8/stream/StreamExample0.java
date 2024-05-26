@@ -24,13 +24,13 @@ public class StreamExample0 {
         1.1 map: returns stream consisting of the results of applying the given function to thr elements of stream.
         1.2 filter: To select elements as per the Predicate passed as argument.
         1.3 sorted: To sort the stream.
-        1.4 flatMap
+        1.4 flatMap: map() + flattering
         1.5 distinct
         1.6 limit
 
     2.Terminal operations: (Return a result of definite type)
         2.1 collect: Return result of intermediate operations performed on the stream.
-        2.2 foeEach: To iterate through every element of the stream.
+        2.2 forEach: To iterate through every element of the stream.
         2.3 reduce: To reduce the elements of a stream to a single value. Takes BinaryOperator as a parameter.
         2.4 anyMatch/allMatch/noneMatch
         2.5 count
@@ -44,12 +44,32 @@ public class StreamExample0 {
         /*
         Intermediate operations:
         */
-        //Map
+        //Map()
+        // Stream<R> map(Stream<T> input)
+        // <R> Stream<R> map(Function<? super T, ? extends R> mapper)
+        // mapper function produce one value foreach input value, One-To-One mapping
+        // stream.of('A', 'B', 'C') --> ('a', 'b', 'c')
         List<Integer> numbers = Arrays.asList(2, 4, 7, 1, 0);
         List<Integer> square0 = numbers.stream().map(x -> x * x).collect(Collectors.toList());
         System.out.println(square0);
         //OR
         List<Integer> square1 = numbers.stream().map(x -> x * x).toList();
+
+        //Employee::getName - one to one mapping
+        List<Employee> empList = EmployeeRepository.getAll();
+        List<String> names = empList.stream().map(Employee::getName).toList();
+        System.out.println(names);
+
+        //emp.getPhoneNumbers() - one to many mapping
+        List<List<String>> phoneNumbers = empList.stream().map(Employee::getPhoneNumbers).toList();
+        System.out.println(phoneNumbers);
+
+        //flatmap()
+        //Stream<R> flatmap(Stream<Stream<T>> input)
+        //mapper function produce multiple values for each input value, One-To-Many mapping
+        //[[1, 2], [3, 4], [5, 6], [7, 8]] --> [1, 2, 3, 4, 5, 6, 7, 8]
+        List<String> phoneNumbers1 = empList.stream().flatMap(emp -> emp.getPhoneNumbers().stream()).toList();
+        System.out.println(phoneNumbers1);
 
         //Filter
         List<Integer> required_data = numbers.stream().filter(n -> n >= 2).collect(Collectors.toList());
