@@ -61,14 +61,18 @@ public class StreamExample0 {
         System.out.println(names);
 
         //emp.getPhoneNumbers() - one to many mapping
-        List<List<String>> phoneNumbers = empList.stream().map(Employee::getPhoneNumbers).toList();
+        List<List<String>> phoneNumbers = empList.stream()
+                .map(Employee::getPhoneNumbers)
+                .toList();
         System.out.println(phoneNumbers);
 
         //flatmap()
         //Stream<R> flatmap(Stream<Stream<T>> input)
         //mapper function produce multiple values for each input value, One-To-Many mapping
         //[[1, 2], [3, 4], [5, 6], [7, 8]] --> [1, 2, 3, 4, 5, 6, 7, 8]
-        List<String> phoneNumbers1 = empList.stream().flatMap(emp -> emp.getPhoneNumbers().stream()).toList();
+        List<String> phoneNumbers1 = empList.stream()
+                .flatMap(emp -> emp.getPhoneNumbers().stream())
+                .toList();
         System.out.println(phoneNumbers1);
 
         //Filter
