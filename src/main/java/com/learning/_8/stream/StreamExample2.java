@@ -37,6 +37,7 @@ public class StreamExample2 {
         stream = streamBuilderEmp.build();
 
 
+
         //Stream Operations:
 
         //forEach
@@ -49,7 +50,8 @@ public class StreamExample2 {
         EmployeeRepository employeeRepository = new EmployeeRepository(empList);
 
         Integer[] empIds = {1, 3};
-        List<Employee> employees = Stream.of(empIds).map(employeeRepository::findId).collect(Collectors.toList());
+        List<Employee> employees = Stream.of(empIds)
+                .map(employeeRepository::findId).collect(Collectors.toList());
         System.out.println("" + employees);
 
         //collect

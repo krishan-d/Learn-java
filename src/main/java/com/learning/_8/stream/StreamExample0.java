@@ -27,6 +27,7 @@ public class StreamExample0 {
         1.4 flatMap: map() + flattering
         1.5 distinct
         1.6 limit
+        1.7 peek
 
     2.Terminal operations: (Return a result of definite type)
         2.1 collect: Return result of intermediate operations performed on the stream.
@@ -42,9 +43,9 @@ public class StreamExample0 {
     public static void main(String[] args) {
 
         /*
-        Intermediate operations:
+        1. Intermediate operations:
         */
-        //Map()
+        // 1.1 Map()
         // Stream<R> map(Stream<T> input)
         // <R> Stream<R> map(Function<? super T, ? extends R> mapper)
         // mapper function produce one value foreach input value, One-To-One mapping
@@ -52,28 +53,52 @@ public class StreamExample0 {
         List<Integer> numbers = Arrays.asList(2, 4, 7, 1, 0);
         List<Integer> square0 = numbers.stream().map(x -> x * x).collect(Collectors.toList());
         System.out.println(square0);
-        //OR
+        // OR
         List<Integer> square1 = numbers.stream().map(x -> x * x).toList();
 
-        //Employee::getName - one to one mapping
-        List<Employee> empList = EmployeeRepository.getAll();
+        // Employee::getName - one to one mapping
+        List<Employee> empList = EmployeeRepository.getUnsortedEmployeeList();
         List<String> names = empList.stream().map(Employee::getName).toList();
         System.out.println(names);
 
-        //emp.getPhoneNumbers() - one to many mapping
+        // emp.getPhoneNumbers() - one to many mapping
         List<List<String>> phoneNumbers = empList.stream()
                 .map(Employee::getPhoneNumbers)
                 .toList();
         System.out.println(phoneNumbers);
 
-        //flatmap()
-        //Stream<R> flatmap(Stream<Stream<T>> input)
-        //mapper function produce multiple values for each input value, One-To-Many mapping
-        //[[1, 2], [3, 4], [5, 6], [7, 8]] --> [1, 2, 3, 4, 5, 6, 7, 8]
+        // 1.2. flatmap()
+        // Stream<R> flatmap(Stream<Stream<T>> input)
+        // mapper function produce multiple values for each input value, One-To-Many mapping
+        // [[1, 2], [3, 4], [5, 6], [7, 8]] --> [1, 2, 3, 4, 5, 6, 7, 8]
         List<String> phoneNumbers1 = empList.stream()
                 .flatMap(emp -> emp.getPhoneNumbers().stream())
                 .toList();
         System.out.println(phoneNumbers1);
+
+        // Stream.peek()
+        /*
+        Java Stream peek() method returns a new Stream consisting of all the elements from the original Stream after applying a given Consumer action.
+
+        Stream peek() method is an intermediate operation.
+        It returns a Stream consisting of the elements of current stream.
+        It additionally perform the provided action on each element as elements.
+        For parallel stream pipelines, the action may be called at whatever time and in whatever thread the element is made available by the upstream operation.
+        If the action modifies shared state, it is itself responsible for providing the required synchronization.
+        peek() exists mainly to support debugging, where we want to see the elements as they flow past a certain point in a pipeline.
+         */
+        // Stream.peek() without terminal operation
+        List<Integer> iList = Arrays.asList(1, 2, 3, 4, 5);
+        iList.stream()
+                .peek( System.out::println );   //prints nothing
+
+        // Stream.peek() with terminal operation
+        List<Integer> newList = iList.stream()
+                .peek(System.out::print)
+                .collect(Collectors.toList());
+        System.out.println(newList); // 12345
+
+
 
         //Filter
         List<Integer> required_data = numbers.stream().filter(n -> n >= 2).collect(Collectors.toList());
