@@ -5,8 +5,6 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 //import java.util.logging.Level;
 //import java.util.logging.Logger;
@@ -15,7 +13,7 @@ public class MongoDriverExample {
     /*
     Logger.getLogger("org.mongodb.driver").setLevel(Level.WARNING);
     */
-    static Logger LOGGER = LoggerFactory.getLogger(MongoDriverExample.class);
+//  static Logger LOGGER = LoggerFactory.getLogger(MongoDriverExample.class);
 
     public static void main(String[] args) {
 
