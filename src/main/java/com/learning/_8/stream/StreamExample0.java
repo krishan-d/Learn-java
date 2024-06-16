@@ -1,6 +1,7 @@
 package com.learning._8.stream;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class StreamExample0 {
@@ -51,7 +52,8 @@ public class StreamExample0 {
         // mapper function produce one value foreach input value, One-To-One mapping
         // stream.of('A', 'B', 'C') --> ('a', 'b', 'c')
         List<Integer> numbers = Arrays.asList(2, 4, 7, 1, 0);
-        List<Integer> square0 = numbers.stream().map(x -> x * x).collect(Collectors.toList());
+        List<Integer> square0 = numbers.stream().map(x -> x * x)
+                .collect(Collectors.toList());
         System.out.println(square0);
         // OR
         List<Integer> square1 = numbers.stream().map(x -> x * x).toList();
@@ -99,9 +101,9 @@ public class StreamExample0 {
         System.out.println(newList); // 12345
 
 
-
         //Filter
-        List<Integer> required_data = numbers.stream().filter(n -> n >= 2).collect(Collectors.toList());
+        Predicate<Integer> p = n -> n >= 2;
+        List<Integer> required_data = numbers.stream().filter(p).collect(Collectors.toList());
         System.out.println("Filtered (n>=2): " + required_data);
 
         //sorted
@@ -114,7 +116,8 @@ public class StreamExample0 {
         //limit
         System.out.println("limit: ");
         Random random = new Random();
-        random.ints().limit(4).forEach(System.out::println);
+        random.ints()
+                .limit(4).forEach(System.out::println);
 
         /*
         Terminal operations:
