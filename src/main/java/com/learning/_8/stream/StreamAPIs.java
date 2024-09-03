@@ -15,14 +15,14 @@ public class StreamAPIs {
 
         // Intermediate Operations:
 
-        // Stream.map()
+        // Stream.map(Function mapper)
         List<String> vListOfStrings = Arrays.asList("1", "2", "3", "4", "5");
         List<Integer> vListOfIntegers = vListOfStrings.stream()
                 .map(Integer::valueOf)
                 .toList();
         System.out.println(vListOfIntegers);   //[1, 2, 3, 4, 5]
 
-        // Stream.flatMap()
+        // Stream.flatMap(Function mapper)
         List<List<Integer>> vListOfLists = Arrays.asList(
                 Arrays.asList(1, 2, 3),
                 Arrays.asList(4, 5),
@@ -34,7 +34,7 @@ public class StreamAPIs {
         System.out.println(flattenedList);    //[1, 2, 3, 4, 5, 6, 7, 8]
 
 
-        // Stream.peek()
+        // Stream.peek(Consumer action)
         /*
         Java Stream peek() method returns a new Stream consisting of all the elements from the original Stream after applying a given Consumer action.
 
@@ -58,12 +58,11 @@ public class StreamAPIs {
         // 12345
 
         // Stream skip()
+        // Stream<T> skip(long n)
         /*
         Stream skip(n) method is used to skip the first 'n' elements from the given Stream.
 
         The skip() method returns a new Stream consisting of the remaining elements of the original Stream, after the specified n elements have been discarded in the encounter order.
-
-        Stream<T> skip(long n)
 
         Stream skip() method is stateful intermediate operation. Stateful operations, such as distinct and sorted, may incorporate state from previously seen elements when processing new elements.
         Returns a stream consisting of the remaining elements of the stream after discarding the first n elements of the stream.
@@ -82,11 +81,10 @@ public class StreamAPIs {
         // [10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
 
         // Stream limit()
+        // Stream<T> limit(long maxSize)
         /*
         Stream limit(n) is used to retrieve a number of elements from the Stream while the count must not be greater than n.
         The limit() method returns a new Stream consisting of the elements of the given stream, truncated to be no longer than maxSize in length.
-
-        Stream<T> limit(long maxSize)
 
         Stream.limit() method is short-circuiting intermediate operation. An intermediate operation is short-circuiting if, when presented with infinite input, it may produce a finite stream as a result. Please note that a terminal operation is short-circuiting if, when presented with infinite input, it may terminate in finite time.
         It returns a stream consisting of the maximum elements, no longer than given size in length, of current stream.
@@ -121,9 +119,8 @@ public class StreamAPIs {
                 .toList();
 
         // Stream filter()
+        // Stream<T> filter(Predicate<? super T> condition)
         /*
-        Stream<T> filter(Predicate<? super T> condition)
-
         filter() is a intermediate Stream operation.
         It returns a Stream consisting of the elements of the given stream that match the given predicate.
         The filter() argument should be stateless predicate which is applied to each element in the stream to determine if it should be included or not.
@@ -154,29 +151,33 @@ public class StreamAPIs {
 
         // Stream findAny()
         /*
-        The Stream.findAny() returns an Optional describing any element of the specified stream if Stream is non-empty. It returns an empty Optional if the stream is empty.
+        The Stream.findAny() returns an Optional describing any element of the specified stream if Stream is non-empty.
+        It returns an empty Optional if the stream is empty.
 
-        In non-parallel streams, findAny() will return the first element in most cases, but this behavior is not guaranteed. The Stream.findAny() method has been introduced for performance gain in the case of parallel streams, only.
+        In non-parallel streams, findAny() will return the first element in most cases, but this behavior is not guaranteed.
+        The Stream.findAny() method has been introduced for performance gain in the case of parallel streams, only.
 
         Syntax:
         Optional<T> findAny()
 
         The findAny() method is a terminal short-circuiting operation.
         The findAny() method returns an Optional.
-        The Optional contains the value as any element of the given stream, if Stream is non-empty. The returned element is the first element in most cases.
+        The Optional contains the value as any element of the given stream, if Stream is non-empty.
+        The returned element is the first element in most cases.
         The Optional contains the empty value, if Stream is empty.
         If the element selected is null, NullPointerException is thrown.
-        For all the sequential and parallel streams, it may return any element. The behavior of findAny() does not change by the parallelism of the Stream.
+        For all the sequential and parallel streams, it may return any element.
+        The behavior of findAny() does not change by the parallelism of the Stream.
         Similarly, there is no guaranteed behavioral difference in case of a stream has a defined encounter order or has no encounter order at all.
          */
 
-        Optional optional = Stream.empty().findAny();
+        Optional<Object> optional = Stream.empty().findAny();
         Assertions.assertTrue(optional.isEmpty()); // true
 
-        Optional optional1 = Stream.of("one", "two", "three", "four").findAny();
+        Optional<String> optional1 = Stream.of("one", "two", "three", "four").findAny();
         Assertions.assertTrue(optional1.isPresent()); // true
 
-        Optional optional2 = Stream.of("one", "two", "three", "four").parallel().findAny();
+        Optional<String> optional2 = Stream.of("one", "two", "three", "four").parallel().findAny();
         Assertions.assertTrue(optional2.isPresent());
 
         // Difference between findFirst() vs findAny()
@@ -210,12 +211,11 @@ public class StreamAPIs {
                 System.out.println("First word starting with 'c': " + word));  // Prints 'cherry'
 
 
-        // Stream noneMatch()
+        // Stream noneMatch(predicate)
+        // boolean noneMatch(Predicate<? super T> predicate)
         /*
         Java Stream noneMatch() method is a short-circuiting terminal operation.
         The noneMatch() is used to check that Stream does not contain any element matching the provided Predicate.
-        Syntax:
-            boolean noneMatch(Predicate<? super T> predicate)
 
         The noneMatch() returns:
         true – if no element in the stream matches the given predicate, or the stream is empty.
@@ -229,10 +229,9 @@ public class StreamAPIs {
         System.out.println(match); // true
 
         // Stream allMatch()
+        // boolean allMatch(Predicate<? super T> predicate)
         /*
         Java Stream allMatch() is a short-circuiting terminal operation that is used to check if all the elements in the stream satisfy the provided predicate.
-        Syntax:
-           boolean allMatch(Predicate<? super T> predicate)
 
         It is a short-circuiting terminal operation.
         It returns whether all elements of this stream match the provided predicate.
@@ -240,23 +239,23 @@ public class StreamAPIs {
         If the stream is empty then true is returned and the predicate is not evaluated.
         The difference between allMatch() and anyMatch() is that anyMatch() returns true if any of the elements in a stream matches the given predicate. When using allMatch(), all the elements must match the given predicate.
          */
-        boolean match1 = Stream.of("one", "two", "three", "four").allMatch( s -> s.contains("\\d+") );
+        boolean match1 = Stream.of("one", "two", "three", "four")
+                .allMatch( s -> s.contains("\\d+") );
         System.out.println(match1); // false
 
-        // Stream anyMatch()
+        // Stream anyMatch(predicate)
+        // boolean anyMatch(Predicate<? super T> predicate)
         /*
-        Syntax:
-            boolean anyMatch(Predicate<? super T> predicate)
-
         Here predicate a non-interfering, stateless Predicate to apply to elements of the stream.
         The anyMatch() method returns true if at least one element satisfies the condition provided by predicate, else false.
          */
-        boolean match2 = Stream.of("one", "two", "three", "four").anyMatch(s -> s.contains("four"));
+        boolean match2 = Stream.of("one", "two", "three", "four")
+                .anyMatch(s -> s.contains("four"));
+
 
         // Stream min()
+        // Optional<T> min(Comparator<? super T> comparator)
         /*
-        Optional<T> min(Comparator<? super T> comparator)
-
         This is a terminal operation. So stream cannot be used after this method is executed.
         Returns the minimum/smallest element of this stream according to the provided Comparator.
         This is a special case of a stream reduction.
@@ -271,9 +270,8 @@ public class StreamAPIs {
         System.out.println(minNumber.get());
 
         // Stream max()
+        // Optional<T> max(Comparator<? super T> comparator)
         /*
-        Optional<T> max(Comparator<? super T> comparator)
-
         The max() method is a terminal operation. So the Stream cannot be used after this method has been executed.
         It returns the maximum/largest element of this stream according to the provided Comparator.
         This is a special case of a stream reduction.
@@ -283,6 +281,24 @@ public class StreamAPIs {
          */
         Optional<Integer> maxNumber = integerList.stream()
                 .max(Integer::compareTo);
+
+
+        List<Integer> numbers = Arrays.asList(2, 4, 7, 1, 0);
+
+        //reduce
+        // T reduce(T identity, BinaryOperator<T> accumulator)
+        int even_sum = numbers.stream().filter(x -> x % 2 == 0).reduce(0, (sum, i) -> sum + i);
+        //Here, sum variable is assigned 0 as initial value and i is added to it.
+        System.out.println("reduce: " + even_sum);
+
+
+        //collect
+        Set<Integer> square_set = numbers.stream().map(x -> x * x).collect(Collectors.toSet());
+        System.out.println("\nSet: " + square_set);
+
+
+        //forEach
+        numbers.stream().map(x -> x * x).forEach(System.out::println);
 
 
     }

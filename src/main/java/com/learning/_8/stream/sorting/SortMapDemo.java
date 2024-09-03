@@ -1,6 +1,6 @@
-package com.learning._8.stream.sort;
+package com.learning._8.stream.sorting;
 
-import com.learning._8.stream.Employee;
+import com.learning._8.stream.model.Employee;
 
 import java.util.Comparator;
 import java.util.HashMap;

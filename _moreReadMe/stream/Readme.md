@@ -20,3 +20,39 @@ The Stream.findAny() returns an Optional describing any element of the specified
 
 In non-parallel streams, findAny() will return the first element in most cases, but this behavior is not guaranteed. The Stream.findAny() method has been introduced for performance gain in the case of parallel streams, only.
 
+
+
+## Links
+
+Lambda Expression:
+1. https://javaconceptoftheday.com/java-8-lambda-expressions/
+
+Functional Interface:
+1. https://javaconceptoftheday.com/java-8-functional-interfaces/
+
+Method references:
+1. https://javaconceptoftheday.com/java-8-method-references/
+
+Java 8 default and static methods:
+1. https://javaconceptoftheday.com/java-8-interface-changes-default-methods-and-static-methods/
+
+Interface vs abstract classes:
+1. https://javaconceptoftheday.com/interface-vs-abstract-class-after-java-8/
+
+stream:
+1. https://javaconceptoftheday.com/java-8-streams-beginners-guide/
+
+Collection vs Stream:
+1. https://javaconceptoftheday.com/collections-and-streams-in-java/
+
+Collectors class:
+1. https://javaconceptoftheday.com/java-8-collectors-tutorial/
+
+Stream questions:
+1. https://javaconceptoftheday.com/solving-real-time-queries-using-java-8-features-employee-management-system/
+
+
+Interview questions:
+1. https://javaconceptoftheday.com/java-8-interview-sample-coding-questions/
+2. https://javaconceptoftheday.com/java-8-interview-questions-and-answers/
+

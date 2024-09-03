@@ -1,4 +1,7 @@
-package com.learning._8.stream;
+package com.learning._8.stream.examples;
+
+import com.learning._8.stream.model.Employee;
+import com.learning._8.stream.repository.EmployeeRepository;
 
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -1,4 +1,6 @@
-package com.learning._8.stream;
+package com.learning._8.stream.repository;
+
+import com.learning._8.stream.model.Employee;
 
 import java.util.Arrays;
 import java.util.List;

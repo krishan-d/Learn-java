@@ -1,4 +1,4 @@
-package com.learning._8.stream.sort;
+package com.learning._8.stream.sorting;
 
 import java.util.Arrays;
 import java.util.Collections;

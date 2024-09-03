@@ -1,4 +1,4 @@
-package com.learning._8.stream;
+package com.learning._8.stream.examples;
 
 import java.util.stream.Stream;
 

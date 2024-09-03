@@ -1,5 +1,7 @@
 package com.learning._8.stream;
 
+import com.learning._8.stream.model.Employee;
+
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,6 +36,7 @@ public class StreamCreation {
                 new Employee(100, "Eve", 2000000),
                 new Employee(102, "Edwina", 1800000)
         };
+
         Stream<Employee> empStream = Stream.of(empArray);
 
         //1.3 From Collection
@@ -57,19 +60,23 @@ public class StreamCreation {
         //2 Infinite Stream
 
         /*
-        2.1 Stream.generate():
+        2.1 Stream.generate(supplier):
         generate(supplier) – accepts a Supplier that provides an infinite series of elements which are placed in the stream.
         The limit() method can then be called in the stream chain to stop the series after a certain number of elements.
         This is suitable for generating constant streams, streams of random elements, etc.
         generate() method accepts Supplier<T> for element generation.
         As the resulting stream is infinite, developer must specify the desired size, or it will until reaches memory limit.
         */
+        System.out.println(".....................");
         //create sequence of 4 strings with value 'element'
         Stream<String> streamGenerated = Stream.generate(() -> "element").limit(4);
 
-        List<Integer> randomNumbers = Stream.generate(() -> (new Random()).nextInt(100))
+        List<Integer> randomNumbers = Stream.generate(() -> (new Random()).nextInt(10))
                 .limit(10)
                 .collect(Collectors.toList());
+
+        Stream.generate(new Random()::nextDouble).limit(10).forEach(System.out::println);
+        System.out.println(".....................");
 
         /*
         2.2 stream.iterate():
@@ -107,6 +114,7 @@ public class StreamCreation {
         IntStream intStream = IntStream.range(1, 3);
         //A similar method rangeClosed() also returns a sequential ordered stream but the end item is inclusive in the stream.
         LongStream longStream = LongStream.rangeClosed(1, 3);
+
         Random random = new Random();
         DoubleStream doubleStream = random.doubles(3);
 
@@ -187,8 +195,9 @@ public class StreamCreation {
                 .boxed()
                 .collect(Collectors.toList());
 
-        // Stream of Dates:
-        // 1. LocalDate.datesUntil() Method (Java 9)
+
+        // 6. Stream of Dates:
+        // 6.1. LocalDate.datesUntil() Method (Java 9)
         // startDate.datesUntil(endDate) : returns a sequential ordered stream of dates that starts from startDate (inclusive)
         // and goes to endDate (exclusive) by an incremental step of 1 day.
         // startDate.datesUntil(endDate, period) : same as above with a configured incremental step period.
@@ -200,13 +209,13 @@ public class StreamCreation {
                 .datesUntil(today.plusDays(21), Period.ofWeeks(1));
         sameDayNext3Weeks.forEach(System.out::println);
 
-        // 2. Get Stream of Dates using Iteration (Java 8)
+        // 6.2. Get Stream of Dates using Iteration (Java 8)
         Stream<LocalDate> nextThreeDays = Stream.iterate(today, d -> d.plusDays(1)).limit(3);
         List<LocalDate> dateList = nextThreeDays.collect(Collectors.toList());
         System.out.println(dateList);
 
 
-        // Iterate Over a Stream With Indices
+        // 7. Iterate Over a Stream With Indices
         AtomicInteger index = new AtomicInteger(); // 0
         System.out.println("index: " + index);
         IntStream.range(0, empArray.length)
@@ -220,14 +229,17 @@ public class StreamCreation {
                 .forEach(System.out::println);
 
 
-        //Stream of String
+        // 8. Stream of String :
+        // 8.1
         IntStream streamOfChars = "abc".chars();
 
-        //Break a String into sub-strings according to specified RegEx
+        // 8.2 Break a String into sub-strings according to specified RegEx
         Stream<String> streamOfString = Pattern.compile(", ").splitAsStream("a, b, c");
+        System.out.println(streamOfString.toList());
+
 
         /*
-        Stream of File:
+        9. Stream of File:
         Files allows us to generate a Stream<String> of a text file through the "lines()" method.
         Every line of text becomes an element of the stream
         */

@@ -1,4 +1,4 @@
-package com.learning._8.stream;
+package com.learning._8.stream.model;
 
 public record Person(long id, String firstName, String lastName, int age) {
 }

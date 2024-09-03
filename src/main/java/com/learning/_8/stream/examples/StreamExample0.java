@@ -1,4 +1,7 @@
-package com.learning._8.stream;
+package com.learning._8.stream.examples;
+
+import com.learning._8.stream.model.Employee;
+import com.learning._8.stream.repository.EmployeeRepository;
 
 import java.util.*;
 import java.util.function.Predicate;
@@ -64,19 +67,19 @@ public class StreamExample0 {
         System.out.println(names);
 
         // emp.getPhoneNumbers() - one to many mapping
-        List<List<String>> phoneNumbers = empList.stream()
+        /*List<List<String>> phoneNumbers = empList.stream()
                 .map(Employee::getPhoneNumbers)
                 .toList();
-        System.out.println(phoneNumbers);
+        System.out.println(phoneNumbers);*/
 
         // 1.2. flatmap()
         // Stream<R> flatmap(Stream<Stream<T>> input)
         // mapper function produce multiple values for each input value, One-To-Many mapping
         // [[1, 2], [3, 4], [5, 6], [7, 8]] --> [1, 2, 3, 4, 5, 6, 7, 8]
-        List<String> phoneNumbers1 = empList.stream()
+        /*List<String> phoneNumbers1 = empList.stream()
                 .flatMap(emp -> emp.getPhoneNumbers().stream())
                 .toList();
-        System.out.println(phoneNumbers1);
+        System.out.println(phoneNumbers1);*/
 
         // Stream.peek()
         /*

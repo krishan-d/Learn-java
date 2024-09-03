@@ -32,6 +32,7 @@ public class StreamConversions {
         String[] stringArray = {"a", "b", "c", "d", "e"};
         Stream<String> strStream = Arrays.stream(stringArray);
 
+
         // 2. Stream To Array
         // The primary method for converting a stream to an array is Stream.toArray().
         // It is also an overloaded method.
@@ -46,14 +47,13 @@ public class StreamConversions {
         Stream<Integer> integerStream1 = Arrays.stream(new Integer[]{1,2,3});
         int[] primitiveArray2 = integerStream1.mapToInt(i -> i).toArray();
 
-        Stream<String> strStream1 = Arrays.stream(new String[]{});
+        Stream<String> strStream1 = Arrays.stream(new String[]{"abc", "xyz"});
         String[] stringArray1 = strStream.toArray(String[]::new);
 
 
-        /**
-         * Convert Iterable or Iterator to Stream
-         */
-        // 1. Converting Iterable to Stream
+        // 3. Convert Iterable or Iterator to Stream
+
+        // 3.1. Converting Iterable to Stream
         // To convert, we will use iterable.spliterator() method to get the Spliterator reference, which is then used to get
         // the Stream using StreamSupport.stream(spliterator, isParallel) method.
 
@@ -64,7 +64,7 @@ public class StreamConversions {
         Stream<String> stream = StreamSupport.stream(iterable.spliterator(), false);
 
 
-        // 2. Converting Iterator to Stream – Java 8
+        // 3.2. Converting Iterator to Stream – Java 8
         // The only difference is that the Iterator interface has no spliterator() method so we need to use
         // Spliterators.spliteratorUnknownSize() method to get the spliterator. Rest everything is same.
 
@@ -77,7 +77,7 @@ public class StreamConversions {
         Stream<String> stream1 = StreamSupport.stream(splitItr, false);
 
 
-        // 3. Converting Iterator to Stream – Java 9
+        // 3.3. Converting Iterator to Stream – Java 9
         // Iterator
         Iterator<String> iterator1 = Arrays.asList("a", "b", "c")
                 .listIterator();

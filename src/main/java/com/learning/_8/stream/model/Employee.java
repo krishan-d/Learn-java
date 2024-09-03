@@ -1,4 +1,4 @@
-package com.learning._8.stream;
+package com.learning._8.stream.model;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ public class Employee {
     String name;
     double salary;
     private List<String> phoneNumbers;
+
 
     public List<String> getPhoneNumbers() {
         return phoneNumbers;

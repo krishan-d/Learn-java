@@ -1,4 +1,6 @@
-package com.learning._8.stream;
+package com.learning._8.stream.examples;
+
+import com.learning._8.stream.model.Person;
 
 import java.util.Arrays;
 import java.util.List;

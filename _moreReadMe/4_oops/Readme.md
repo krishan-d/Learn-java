@@ -261,3 +261,8 @@ The Object class is the parent class of all the classes in java by default.
 <tr><td>public final void wait()throws InterruptedException</td><td> causes the current thread to wait, until another thread notifies (invokes notify() or notifyAll() method).</td></tr>
 <tr><td>protected void finalize()throws Throwable</td><td> is invoked by the garbage collector before object is being garbage collected.</td></tr>
 </tbody></table>
+
+
+## Links:
+https://javaconceptoftheday.com/java-oop-concepts-cheat-sheet/
+
