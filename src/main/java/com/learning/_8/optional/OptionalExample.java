@@ -1,5 +1,9 @@
 package com.learning._8.optional;
 
+import com.learning._8.optional.model.Address;
+import com.learning._8.optional.model.Country;
+import com.learning._8.optional.model.User;
+
 import java.util.List;
 import java.util.Optional;
 

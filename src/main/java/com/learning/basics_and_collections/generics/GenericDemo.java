@@ -1,7 +1,5 @@
 package com.learning.basics_and_collections.generics;
 
-import java.util.*;
-
 //1. Generic class
 class Box<T> {
     private T n;
@@ -45,14 +43,3 @@ class Trunk<T, S> {
     }
 }
 
-class Animal {
-}
-
-class Cat extends Animal {
-}
-
-class RedCat extends Cat {
-}
-
-class Dog extends Animal {
-}

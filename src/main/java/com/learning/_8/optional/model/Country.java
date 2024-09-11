@@ -1,4 +1,4 @@
-package com.learning._8.optional;
+package com.learning._8.optional.model;
 
 public class Country {
     private String name;

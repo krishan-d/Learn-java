@@ -1,4 +1,9 @@
-package com.learning.dp.factory_dp.os;
+package com.learning.dp.factory_dp;
+
+import com.learning.dp.factory_dp.os.Android;
+import com.learning.dp.factory_dp.os.IOS;
+import com.learning.dp.factory_dp.os.OS;
+import com.learning.dp.factory_dp.os.Windows;
 
 public class OsFactory {
 

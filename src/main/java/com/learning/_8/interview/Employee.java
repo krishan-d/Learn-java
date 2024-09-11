@@ -1,4 +1,4 @@
-package com.learning._8.stream.interview;
+package com.learning._8.interview;
 
 public class Employee {
 

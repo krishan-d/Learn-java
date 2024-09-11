@@ -1,4 +1,4 @@
-package com.learning._8.stream.interview;
+package com.learning._8.interview;
 
 import com.learning._8.stream.model.Department;
 import com.learning._8.stream.model.User;
@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 public class Questions {
     public static void main(String[] args) {
 
+        // ex 1 : Find the first non-repeated character in a given string
         String str = "hii kriiiiish!";
 
         str.chars()
@@ -105,12 +106,25 @@ public class Questions {
         List<Integer> iList = Stream.iterate(new int[]{0, 1}, i -> new int[]{i[1], i[0] + i[1]})
                 .limit(10)
                 .map(a -> a[0])
-                .collect(Collectors.toList());
+                .toList();
         System.out.println("iList: " + iList);
 
 
         // optional
         // ex 10 : use optional to handle potential null values in a stream
+
+
+
+
+        // ex 11 : Find duplicates in a list of values
+        List<Integer> myList = Arrays.asList(10,15,8,49,25,98,98,32,15);
+        Set<Integer> s = new HashSet<>();
+        myList.stream().filter(x-> !s.add(x)).forEach(System.out::println);
+
+
+
+
+
 
 
 

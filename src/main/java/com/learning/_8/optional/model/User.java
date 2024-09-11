@@ -1,6 +1,4 @@
-package com.learning._8.optional;
-
-import java.util.Optional;
+package com.learning._8.optional.model;
 
 public class User {
     private int id;

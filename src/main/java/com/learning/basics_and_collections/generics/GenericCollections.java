@@ -1,5 +1,10 @@
 package com.learning.basics_and_collections.generics;
 
+import com.learning.basics_and_collections.generics.model.Animal;
+import com.learning.basics_and_collections.generics.model.Cat;
+import com.learning.basics_and_collections.generics.model.Dog;
+import com.learning.basics_and_collections.generics.model.RedCat;
+
 import java.util.*;
 
 

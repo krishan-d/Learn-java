@@ -1,5 +1,6 @@
 package com.learning._8.stream;
 
+import com.learning.Interview.interfaceQue.A;
 import com.learning._8.stream.model.Department;
 import com.learning._8.stream.model.Person;
 import com.learning._8.stream.model.Student;
@@ -380,7 +381,8 @@ public class StreamCollectors {
         studentList.add(new Student("Vijay", 19, "Mathematics", 92.8));
         studentList.add(new Student("Harry", 20, "History", 71.9));
 
-        // 1. Collectors.toList() :
+        // 1.
+        // Collectors.toList() :
         // It returns a Collector which collects all input elements into a new List.
 
         //Example : Collecting top 3 performing students into List
@@ -390,7 +392,8 @@ public class StreamCollectors {
 
         System.out.println(top3Students);
 
-        // 2. Collectors.toSet() :
+        // 2.
+        // Collectors.toSet() :
         // It returns a Collector which collects all input elements into a new Set.
 
         // Collecting departments offered into Set.
@@ -399,8 +402,30 @@ public class StreamCollectors {
 
         System.out.println(departments);
 
-        // 3. Collectors.toMap() :
+        // 3.
+        // Collectors.toMap() :
         // This method returns a Collector which collects input elements into a Map whose keys and values are the result of applying mapping functions to input elements.
+
+        /*
+        Collector toMap(Function keyMapper, Function valueMapper)
+        Collector toMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction)
+        Collector toMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction, Supplier mapFactory)
+
+        Returns: A collector which collects elements into Map
+
+        Collector toConcurrentMap(Function keyMapper, Function valueMapper)
+        Collector toConcurrentMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction)
+        Collector toConcurrentMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction, Supplier mapFactory)
+
+        Returns: a concurrent, unordered Collector which collects elements into a ConcurrentMap
+
+        Params:
+        keyMapper - mapping function to produce keys
+        valueMapper - mapping function to produce values
+        mergeFunction - a merge function, used to resolve collisions between values assosiated with the same key,
+        as supplied to Map.merge(Object, Object, BiFunction)
+        mapFactory - a supplier providing a new empty map into which the results will be inserted
+         */
 
         // Example : Collecting name and percentage of each student into a Map
         Map<String, Double> namePercentageMap = studentList.stream()
@@ -408,7 +433,8 @@ public class StreamCollectors {
 
         System.out.println(namePercentageMap);
 
-        // 4. Collectors.toCollection() :
+        // 4.
+        // Collectors.toCollection() :
 
         // This method returns a Collector which collects all input elements into a new Collection.
 
@@ -419,7 +445,18 @@ public class StreamCollectors {
 
         System.out.println(studentLinkedList);
 
-        // 5. Collectors.joining() :
+        // 5.
+        // Collectors.joining() :
+        // Collectors.joining(CharSequence delimiter)
+        // Collectors.joining(CharSequence delimiter, CharSequence prefix, CharSequence suffix)
+
+        // Params:
+        // delimiter – the delimiter to be used between each element
+        // prefix – the sequence of characters to be used at the beginning of the joined result
+        // suffix – the sequence of characters to be used at the end of the joined result
+        // Returns:
+        // A Collector which concatenates CharSequence elements, separated by the specified delimiter, in encounter order
+
         // This method returns a Collector which concatenates input elements separated by the specified delimiter.
 
         // Example : Collecting the names of all students joined as a string
@@ -429,7 +466,8 @@ public class StreamCollectors {
         System.out.println(namesJoined);
 
 
-        // 6. Collectors.counting() :
+        // 6.
+        // Collectors.counting() :
         // It returns a Collector that counts number of input elements.
 
         // Example : Counting number of students.
@@ -438,8 +476,15 @@ public class StreamCollectors {
 
         System.out.println(studentCount);
 
-        // 7. Collectors.maxBy() :
-        // This method returns a Collector that collects largest element in a stream according to supplied Comparator.
+        // 7.
+        // Collectors.maxBy(...) :
+        // Returns a Collector that produces the maximal element according to a given Comparator, described as an Optional<T>.
+
+        // Collectors.maxBy(Comparator comparator)
+        // Params:
+        // comparator – a Comparator for comparing elements
+        // Returns:
+        // a Collector that produces the maximal value
 
         // Example : Collecting highest percentage.
         Optional<Double> highPercentage = studentList.stream()
@@ -448,8 +493,15 @@ public class StreamCollectors {
 
         System.out.println(highPercentage);
 
-        // 8. Collectors.minBy() :
+        // 8.
+        // Collectors.minBy(...) :
         // This method returns a Collector which collects smallest element in a stream according to supplied Comparator.
+
+        // Collectors.minBy(Comparator comparator)
+        // Params:
+        // comparator – a Comparator for comparing elements
+        // Returns:
+        // a Collector that produces the minimal value
 
         // Example : Collecting lowest percentage.
         Optional<Double> lowPercentage = studentList.stream()
@@ -459,7 +511,9 @@ public class StreamCollectors {
         System.out.println(lowPercentage);
 
 
-        // 9. summingInt(), summingLong(), summingDouble():
+        // 9.
+        // summingInt(), summingLong(), summingDouble():
+
         // These methods returns a Collector which collects sum of all input elements.
 
         // Example : Collecting sum of percentages
@@ -469,7 +523,9 @@ public class StreamCollectors {
         System.out.println(sumOfPercentages);
 
 
-        // 10. averagingInt(), averagingLong(), averagingDouble()
+        // 10.
+        // averagingInt(), averagingLong(), averagingDouble()
+        // syntax : averagingDouble(ToDoubleFunction mapper)
 
         // These methods return a Collector which collects average of input elements.
         // Example : Collecting average percentage
@@ -479,7 +535,8 @@ public class StreamCollectors {
         System.out.println(averagePercentage);
 
 
-        // 11.  summarizingInt(), summarizingLong(), summarizingDouble()
+        // 11.
+        // summarizingInt(), summarizingLong(), summarizingDouble()
 
         // These methods return a special class called Int/Long/ DoubleSummaryStatistics which contain statistical information like sum, max, min, average etc of input elements.
 
@@ -492,9 +549,26 @@ public class StreamCollectors {
         System.out.println("Average Percentage : "+studentStats.getAverage());
 
 
-        // 12. Collectors.groupingBy() :
+        // 12.
+        // Collectors.groupingBy() :
 
         // This method groups the input elements according supplied classifier and returns the results in a Map.
+        // Stream -> groupingBy() -> Map of elements after applying ‘group by’ operation
+
+        // 1.1 Syntax:
+        // groupingBy(classifier)
+        // groupingBy(classifier, collector)
+        // groupingBy(classifier, supplier, collector)
+
+        // classifier: maps input elements to map keys
+        // collector: is the downstream reduction function. By default, Collectors.toList() is used which causes the grouped elements into a List.
+        // supplier: provides a new empty Map into which the results will be inserted. By default, HashMap::new is used.
+        // We can use other maps such as TreeMap, LinkedHashMap or ConcurrentMap to insert additional behavior in the grouping process such as sorting.
+
+        // 1.2. Using groupingByConcurrent() for Parallel Processing
+        // groupingByConcurrent(classifier)
+        // groupingByConcurrent(classifier, collector)
+        // groupingByConcurrent(classifier, supplier, collector)
 
         // Example : Grouping the students by subject
         Map<String, List<Student>> studentsGroupedBySubject = studentList.stream()
@@ -503,9 +577,13 @@ public class StreamCollectors {
         System.out.println(studentsGroupedBySubject);
 
 
-        // 13. Collectors.partitioningBy() :
+        // 13.
+        // Collectors.partitioningBy() :
+
+        // Syntex:
         // Collectors.partitioningBy(Predicate predicate)
         // Collectors.partitioningBy(Predicate predicate, Collector downstream)
+
         // Param:
         // predicate - a predicate used for classifying input elements
         // downstream - a Collector implementing the downstream reduction
@@ -523,7 +601,10 @@ public class StreamCollectors {
         System.out.println(studentspartionedByPercentage);
 
 
-        // 14. Collectors.collectingAndThen() :
+        // 14.
+        // Collectors.collectingAndThen() :
+
+        // Syntex:
         // Collectors.collectingAndThen(Collector downstream, Function finisher)
         // Param :
         //      downstream - a Collector

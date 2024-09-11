@@ -1,4 +1,4 @@
-package com.learning._8.lambda;
+package com.learning._8.lambda.model;
 
 public class Book {
     private int id;
