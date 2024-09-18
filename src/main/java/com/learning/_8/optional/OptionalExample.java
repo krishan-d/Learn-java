@@ -4,7 +4,6 @@ import com.learning._8.optional.model.Address;
 import com.learning._8.optional.model.Country;
 import com.learning._8.optional.model.User;
 
-import java.util.List;
 import java.util.Optional;
 
 public class OptionalExample {
@@ -22,29 +21,87 @@ public class OptionalExample {
         return user;
     }
 
-    public static void main(String[] args) {
-        //Creation:
-        //1.Return an Empty Optional
+    public static void main(String[] args) throws Exception {
+        //1.0 Creation:
+        //1.1 Return an Empty Optional
         Optional<String> optionalE = Optional.empty();
 
-        //2.Returns an Optional that contains a non-null value
+        //1.2 Returns an Optional that contains a non-null value
         String string = "NON-NULL";
         Optional<String> optionalS = Optional.of(string);
 
-        //3.Returns an Optional with specific value or an empty Optional if parameter is null
+        //1.3 Returns an Optional with specific value or an empty Optional if parameter is null
         Optional<String> optional = Optional.ofNullable(getString());
 
 
-        //Usage:
         User user1 = new User();
+        Optional<User> optional1 = Optional.ofNullable(user1);
+//      System.out.println(optional1.map(User::getAddress).map(Address::getAddressLine).orElse("None"));
+
+
         User user2 = new User(1000, "Password1234#");
         user2.setAddress(new Address("addressLine", "Noida", new Country("India", "+91")));
+        Optional<User> optional2 = Optional.ofNullable(user2);
 
-        Optional<User> optional1 = Optional.ofNullable(user1);
-        System.out.println(optional1.map(User::getAddress).map(Address::getAddressLine).orElse("None"));
+        // 2.0 Checking for Values
+        // 2.1 isPresent()
+        if (user2 != null) {
+            System.out.println(user2.getAddress());
+        } else {
+            System.out.println("Null");
+        }
+        // or
+        if (optional2.isPresent()) {
+            System.out.println(user2.getAddress());
+        } else {
+            System.out.println("Null");
+        }
 
-        System.out.println(addressLine(user2));
-        System.out.println(addressLineOptional(user2));
+        // 2.2 ifPresent()
+        optional2.ifPresent(System.out::println);
+
+        // 2.3 isEmpty() = !Optional.isPresent()
+
+
+        // 3.0 Nested Null-checks
+        // old approach
+//      if (user2 != null) {
+//          Address address = user2.getAddress();
+//          if (address != null) {
+//              String addressLine = address.getAddressLine();
+//              if (addressLine != null) System.out.println(addressLine);
+//          }
+//      }
+
+        // or
+        // new approach [optional]
+        String addressLine2 = optional2.flatMap(User::getAddress)
+                .map(Address::getAddressLine)
+                .orElse("not specified");
+        // working:
+        // flatMap : Optional<User> ---map---> Optional<Optional<Address>> ---flat---> Optional<Address>
+        // map : Optional<Address> ---map---> Optional<String>
+        System.out.println(addressLine2);
+
+
+        // 4.0 Alternative results:
+        // 4.1 .orElse()
+//      User user3 = user2 != null ? user2: new User(2000, "");
+        // or
+        User user3 = optional2.orElse(new User(2000, ""));
+
+        // 4.2 .orElseGet()
+        User user4 = optional2.orElseGet(() -> new User(2000, ""));
+
+        // .orElseThrow()
+        User user5 = optional2.orElseThrow(Exception::new);
+
+
+        // 5.0 Getting values from optional
+        if (optional2.isPresent()){
+            System.out.println(optional2.get());
+        }
+
 
 //      Checking if a value is present
         Optional<String> optionalValue = "".describeConstable();// Some operation that may or may not produce a value
@@ -69,31 +126,6 @@ public class OptionalExample {
 
     public static String getString() {
         return null;
-    }
-
-    public static String addressLine(User user) {
-        if (user != null) {
-            Address address = user.getAddress();
-            if (address != null) {
-                String addressLine = address.getAddressLine();
-                if (addressLine != null) return addressLine;
-            }
-        }
-        return "not specified";
-    }
-
-    public static String addressLineOptional(User user) {
-        Optional<User> optional = Optional.ofNullable(user);
-        return optional.map(User::getAddress)
-                .map(Address::getAddressLine)
-                .orElse("not specified");
-    }
-
-    public Optional<User> findUserById(List<User> users, int id) {
-        for (User user: users) {
-            if (user.getId() == id) return Optional.of(user);
-        }
-        return Optional.empty();
     }
 
 }

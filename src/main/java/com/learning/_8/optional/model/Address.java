@@ -1,15 +1,17 @@
 package com.learning._8.optional.model;
 
+import java.util.Optional;
+
 public class Address {
     private String addressLine;
     private String city;
-    private Country country;
+    private Optional<Country> country;
 
     public Address(String addressLine, String city, Country country) {
         super();
         this.addressLine = addressLine;
         this.city = city;
-        this.country = country;
+        this.country = Optional.ofNullable(country);
     }
 
     public String getAddressLine() {
@@ -28,11 +30,20 @@ public class Address {
         this.city = city;
     }
 
-    public Country getCountry() {
+    public Optional<Country> getCountry() {
         return country;
     }
 
     public void setCountry(Country country) {
-        this.country = country;
+        this.country = Optional.ofNullable(country);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressLine='" + addressLine + '\'' +
+                ", city='" + city + '\'' +
+                ", country=" + country +
+                '}';
     }
 }

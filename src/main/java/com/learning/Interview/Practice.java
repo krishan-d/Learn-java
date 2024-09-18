@@ -15,6 +15,7 @@ public class Practice {
         Object ob = new int[]{1, 2, 3};
         if(ob instanceof int[]) System.out.println("Array");
         else System.out.println("No Array!");
+        // Array
 
     }
 }

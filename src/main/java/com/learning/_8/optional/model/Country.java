@@ -25,4 +25,12 @@ public class Country {
     public void setIso_code(String iso_code) {
         this.iso_code = iso_code;
     }
+
+    @Override
+    public String toString() {
+        return "Country{" +
+                "name='" + name + '\'' +
+                ", iso_code='" + iso_code + '\'' +
+                '}';
+    }
 }
