@@ -1,10 +1,8 @@
 package com.learning._8.stream;
 
 import com.learning.Interview.interfaceQue.A;
-import com.learning._8.stream.model.Department;
-import com.learning._8.stream.model.Person;
-import com.learning._8.stream.model.Student;
-import com.learning._8.stream.model.User;
+import com.learning._8.stream.model.*;
+import com.learning._8.stream.repository.StudentRepository;
 import org.javatuples.Pair;
 
 import java.util.*;
@@ -368,7 +366,8 @@ public class StreamCollectors {
 
         //------------------------------------------------------------------------------------------
 
-        List<Student> studentList = new ArrayList<Student>();
+
+        /*List<Student> studentList = new ArrayList<Student>();
 
         studentList.add(new Student("Paul", 11, "Economics", 78.9));
         studentList.add(new Student("Zevin", 12, "Computer Science", 91.2));
@@ -379,7 +378,9 @@ public class StreamCollectors {
         studentList.add(new Student("Nihira", 17, "Computer Science", 84.6));
         studentList.add(new Student("Mitshu", 18, "History", 73.5));
         studentList.add(new Student("Vijay", 19, "Mathematics", 92.8));
-        studentList.add(new Student("Harry", 20, "History", 71.9));
+        studentList.add(new Student("Harry", 20, "History", 71.9));*/
+
+        List<Student> studentList = StudentRepository.getUnsortedStudentList();
 
         // 1.
         // Collectors.toList() :
@@ -547,6 +548,7 @@ public class StreamCollectors {
         System.out.println("Highest Percentage : "+studentStats.getMax());
         System.out.println("Lowest Percentage : "+studentStats.getMin());
         System.out.println("Average Percentage : "+studentStats.getAverage());
+//      System.out.println("Average Percentage : "+studentStats.getSum());
 
 
         // 12.
@@ -561,8 +563,10 @@ public class StreamCollectors {
         // groupingBy(classifier, supplier, collector)
 
         // classifier: maps input elements to map keys
-        // collector: is the downstream reduction function. By default, Collectors.toList() is used which causes the grouped elements into a List.
-        // supplier: provides a new empty Map into which the results will be inserted. By default, HashMap::new is used.
+        // collector: is the downstream reduction function.
+        //      By default, Collectors.toList() is used which causes the grouped elements into a List.
+        // supplier: provides a new empty Map into which the results will be inserted.
+        //      By default, HashMap::new is used.
         // We can use other maps such as TreeMap, LinkedHashMap or ConcurrentMap to insert additional behavior in the grouping process such as sorting.
 
         // 1.2. Using groupingByConcurrent() for Parallel Processing
@@ -619,6 +623,36 @@ public class StreamCollectors {
                 .collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
 
         System.out.println(first3Students);
+
+
+        // 15.
+        // Collectors.reducing(BinaryOperator<T> op)
+        // Collectors.reducing(T identity, BinaryOperator<T> op)
+        // Collectors.reducing(U identity, Function<? super T, ? extends U> mapper, BinaryOperator<U> op)
+
+        List<Integer> numbers = Arrays.asList(10, 20, 30, 40);
+
+        // reducing(BinaryOperator<T> op) :
+        // No identity value, returns Optional.
+        Optional<Integer> sum1 = numbers.stream()
+                .collect(Collectors.reducing((a, b) -> a + b));
+
+        // reducing(T identity, BinaryOperator<T> op) :
+        // Provides an identity value, returns a result directly
+        // identity : default value for empty streams
+        Integer sum2 = numbers.stream()
+                .collect(Collectors.reducing(0, (a, b) -> a + b));
+
+        // reducing(U identity, Function<? super T, ? extends U> mapper, BinaryOperator<U> op):
+        // mapper : Maps each element before performing the reduction.
+        // Useful when reducing custom objects after transforming them into a simpler form.
+        Integer idSum = studentList.stream()
+                .collect(Collectors.reducing(0, Student::getId, (a, b)->(a+b)));
+        // or
+        Double salaryTotal =  users.stream()
+                .collect(Collectors.reducing(0.0, User::salary, (a, b)->(a+b)));
+
+
 
     }
 }

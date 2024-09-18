@@ -145,13 +145,15 @@ public class StreamCreation {
         // 4. Finding Sum, Average, Max and Min
         // 4.1. Built-in Methods
         /*
-         * All three classes, IntStream, LongStream and DoubleStream, consist of numerical values and it makes sense to provide built-in support for common aggregate operations on items of the stream.
-         * These classes provide the following methods for these operations. The return types are corresponding to the type of the stream. The following methods are from IntStream class:
-         * sum() – returns the sum of items in the stream.
-         * average() – returns an OptionalDouble describing the arithmetic mean of items of the stream.
-         * max() – returns an OptionalInt describing the maximum item of the stream.
-         * min() – returns an OptionalInt describing the mimimum item of the stream.
-         * count() – returns the count of items in the stream.
+         * All three classes, IntStream, LongStream and DoubleStream, consist of numerical values
+         * and it makes sense to provide built-in support for common aggregate operations on items of the stream.
+         * These classes provide the following methods for these operations. The return types are corresponding to the type of the stream.
+         * The following methods are from IntStream class:
+         *      sum() – returns the sum of items in the stream.
+         *      average() – returns an OptionalDouble describing the arithmetic mean of items of the stream.
+         *      max() – returns an OptionalInt describing the maximum item of the stream.
+         *      min() – returns an OptionalInt describing the minimum item of the stream.
+         *      count() – returns the count of items in the stream.
          */
         int max = IntStream.of(10, 18, 12, 70, 5)
                 .max()
