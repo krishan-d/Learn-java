@@ -1,8 +1,10 @@
 package com.learning._8.stream.model;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-public class Employee {
+public class Employee implements Comparable<Employee>{
     int id;
     String name;
     double salary;
@@ -61,5 +63,10 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public int compareTo(@NotNull Employee o) {
+        return this.name.compareTo(o.name);
     }
 }

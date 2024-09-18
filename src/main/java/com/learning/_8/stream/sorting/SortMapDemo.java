@@ -21,12 +21,28 @@ public class SortMapDemo {
         map.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(System.out::println);
 
         Map<Employee, Integer> empMap = new TreeMap<>();
-        empMap.put(new Employee(1, "Eve", 100000.0), 60);
-        empMap.put(new Employee(2, "Mark", 200000.0), 100);
+        empMap.put(new Employee(1, "Mark", 200000.0), 60);
+        empMap.put(new Employee(2, "Eve", 200000.0), 100);
         empMap.put(new Employee(3, "Zane", 300000.0), 40);
 
+        // 1.0
         empMap.entrySet().stream()
-                .sorted(Map.Entry.comparingByKey(Comparator.comparing(Employee::getSalary).reversed()))
+                .sorted(Map.Entry.comparingByKey(
+                        Comparator.comparing(Employee::getSalary).reversed()))
+                .forEach(System.out::println);
+
+
+        // 1.1
+        /*Comparator<Map.Entry<Employee, Object>> comparator = Map.Entry.comparingByKey(
+                Comparator.comparing(Employee::getSalary).reversed().thenComparing(Employee::getId));
+        empMap.entrySet().stream()
+                .sorted((Comparator<? super Map.Entry<Employee, Integer>>) comparator)
+                .forEach(System.out::println);*/
+        // or
+        empMap.entrySet().stream()
+                .sorted(
+                        Map.Entry.comparingByKey(
+                                Comparator.comparing(Employee::getSalary).reversed().thenComparing(Employee::getId)))
                 .forEach(System.out::println);
 
     }
