@@ -39,8 +39,9 @@ Java 8 default and static methods:
 Interface vs abstract classes:
 1. https://javaconceptoftheday.com/interface-vs-abstract-class-after-java-8/
 
-stream:
+Stream:
 1. https://javaconceptoftheday.com/java-8-streams-beginners-guide/
+2. https://stackabuse.com/search/?q=Java+8
 
 Collection vs Stream:
 1. https://javaconceptoftheday.com/collections-and-streams-in-java/

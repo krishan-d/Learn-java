@@ -69,7 +69,7 @@ public class StreamAPIs {
         - The skip() method returns a new Stream consisting of the remaining elements of the original Stream, after the specified n elements have been discarded in the encounter order.
 
         - Stream skip() method is stateful intermediate operation.
-                Stateful operations, such as distinct and sorted, may incorporate state from previously seen elements when processing new elements.
+        - Stateful operations, such as distinct and sorted, may incorporate state from previously seen elements when processing new elements.
         - Returns a stream consisting of the remaining elements of the stream after discarding the first n elements of the stream.
         - If the stream contains fewer than n elements then an empty stream will be returned.
 
@@ -93,8 +93,9 @@ public class StreamAPIs {
         - The limit() method returns a new Stream consisting of the elements of the given stream, truncated to be no longer than maxSize in length.
 
         - Stream.limit() method is short-circuiting intermediate operation.
-                An intermediate operation is short-circuiting if, when presented with infinite input, it may produce a finite stream as a result.
-                Please note that a terminal operation is short-circuiting if, when presented with infinite input, it may terminate in finite time.
+        - An intermediate operation is short-circuiting if, when presented with infinite input, it may produce a finite stream as a result.
+        - Please note that a terminal operation is short-circuiting if, when presented with infinite input, it may terminate in finite time.
+
         - It returns a stream consisting of the maximum elements, no longer than given size in length, of current stream.
          */
         List<Integer> newListLimit = evenNumInfiniteStream.get()
