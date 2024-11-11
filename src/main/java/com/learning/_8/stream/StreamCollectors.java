@@ -56,7 +56,7 @@ public class StreamCollectors {
          */
         /*
         Collector toMap(Function keyMapper, Function valueMapper)
-        Collector toMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction)
+        Collector toMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction)  // Java 12
         Collector toMap(Function keyMapper, Function valueMapper, BinaryOperator mergeFunction, Supplier mapFactory)
 
         Returns: A collector which collects elements into Map

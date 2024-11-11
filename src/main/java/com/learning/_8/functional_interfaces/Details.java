@@ -4,7 +4,8 @@ public class Details {
 
     /*
      * Link: https://www.geeksforgeeks.org/functional-interfaces-java/?ref=lbp
-     * Since Java SE 1.8 onwards, there are many interfaces that are converted into functional interfaces. All these interfaces are annotated with @FunctionalInterface. These interfaces are as follows –
+     * Since Java SE 1.8 onwards, there are many interfaces that are converted into functional interfaces.
+     * All these interfaces are annotated with @FunctionalInterface. These interfaces are as follows –
      * Runnable –> This interface only contains the run() method.
      * Comparable –> This interface only contains the compareTo() method.
      * ActionListener –> This interface only contains the actionPerformed() method.
@@ -19,7 +20,7 @@ public class Details {
      * Amidst the previous four interfaces, the first three interfaces,i.e., Consumer, Predicate, and Function, likewise have additions that are provided beneath –
      * Consumer -> Bi-Consumer
      * Predicate -> Bi-Predicate
-     * Function -> Bi-Function, Unary Operator, Binary Operator
+     * Function -> BiFunction, UnaryOperator, BinaryOperator
      */
 
     /* 1. Consumer
@@ -42,8 +43,7 @@ public class Details {
     The implementation of the Predicate functional interface also encapsulates the logic of filtering
     (a process that is used to filter stream components on the base of a provided predicate) in Java.
 
-    Just like the Consumer functional interface, Predicate functional interface also has some extensions.
-    These are IntPredicate, DoublePredicate, and LongPredicate.
+    Extensions/variants : These are IntPredicate, DoublePredicate, and LongPredicate.
     These types of predicate functional interfaces accept only primitive data types or values as arguments.
 
     Bi-Predicate – Bi-Predicate is also an extension of the Predicate functional interface, which, instead of one, takes two arguments,
@@ -95,17 +95,19 @@ public class Details {
     {
     ……...
     }
-    We can understand front the above example that the Unary Operator accepts only one argument and returns a single argument only.
+    We can understand from the above example that the Unary Operator accepts only one argument and returns a single argument only.
     Still, in Unary Operator both the input and output values must be identical and of the same type.
 
-    On the other way, Binary Operator takes two values and returns one value comparable to Bi- Function but similar to a Unary Operator, the input and output value types must be identical and of the same type.*/
+    On the other way, Binary Operator takes two values and returns one value comparable to Bi- Function but similar to a Unary Operator,
+    the input and output value types must be identical and of the same type.*/
 
 
     /* 4. Supplier
     The Supplier functional interface is also a type of functional interface that does not take any input or argument and yet returns a single output.
     This type of functional interface is generally used in the lazy generation of values.
     Supplier functional interfaces are also used for defining the logic for the generation of any sequence.
-    For example – The logic behind the Fibonacci Series can be generated with the help of the Stream. generate method, which is implemented by the Supplier functional Interface.
+    For example – The logic behind the Fibonacci Series can be generated with the help of the Stream. generate method,
+    which is implemented by the Supplier functional Interface.
 
     The different extensions of the Supplier functional interface hold many other suppliers functions like
     BooleanSupplier, DoubleSupplier, LongSupplier, and IntSupplier.

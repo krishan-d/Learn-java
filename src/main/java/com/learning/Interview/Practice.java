@@ -4,7 +4,7 @@ import java.math.BigInteger;
 
 public class Practice {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         String n = "7";
         BigInteger b = new BigInteger(n);
@@ -16,6 +16,17 @@ public class Practice {
         if(ob instanceof int[]) System.out.println("Array");
         else System.out.println("No Array!");
         // Array
+
+
+        Thread t = new Thread("T");
+        t.start();
+        t.join();
+
+
+
+
+
+
 
     }
 }
