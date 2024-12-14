@@ -1,6 +1,6 @@
 package com.learning._8.stream;
 
-import com.learning.Interview.interfaceQue.A;
+//import com.learning.Interview.interfaceQue.A;
 import com.learning._8.stream.model.*;
 import com.learning._8.stream.repository.StudentRepository;
 import org.javatuples.Pair;

@@ -7,11 +7,11 @@ public class SingletonDcl {
 
         Thread T1 = new Thread(() -> {
             Abc ob1 = Abc.getInstance();
-        });
+        }, "Thread-1");
 
         Thread T2 = new Thread(() -> {
             Abc ob2 = Abc.getInstance();
-        });
+        }, "Thread-2");
 
         T1.start();
         //T1.start(); //will throw IllegalThreadStateException i.e. start method can be invoked only once one a Thread
@@ -29,7 +29,10 @@ class Abc {
         //object instantiation
         if (ob == null) {
             synchronized(Abc.class) { // makes 6x times slower
-                if (ob == null) ob = new Abc();
+                if (ob == null) {
+                    ob = new Abc();
+                    System.out.println(Thread.currentThread().getName());
+                }
             }
         }
         return ob;

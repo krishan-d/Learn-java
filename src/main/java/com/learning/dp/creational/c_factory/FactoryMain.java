@@ -1,7 +1,8 @@
 package com.learning.dp.creational.c_factory;
 
 import com.learning.dp.creational.c_factory.os.OS;
-import com.learning.dp.factory_dp.os.*;
+import com.learning.dp.creational.c_factory.os.OsType;
+//import com.learning.dp.factory_dp.os.*;
 
 public class FactoryMain {
 
@@ -19,7 +20,7 @@ public class FactoryMain {
         * */
 
         OsFactory osf = new OsFactory();
-        OS object = osf.getInstance("ios");
+        OS object = osf.getOsInstance(OsType.IOS);
         object.spec();
     }
 }
